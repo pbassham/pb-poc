@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => (
               <td>{node.title}</td>
               <td>{node.slug}</td>
               <td>{node.postId}</td>
-              <td dangerouslySetInnerHTML={{ __html: node.excerpt }} />>
+              <td dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </tr>
           ))}
         </tbody>
