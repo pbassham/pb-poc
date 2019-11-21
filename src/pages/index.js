@@ -1,21 +1,58 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+// import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+
+    <h1>Hello, Phil!</h1>
+
+    <div>
+      <h2>My Site's Posts</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Slug</th>
+            <th>Post ID</th>
+            <th>Excerpt</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.wpgraphql.posts.edges.map(({ node }, index) => (
+            <tr key={index}>
+              <td>{node.title}</td>
+              <td>{node.slug}</td>
+              <td>{node.postId}</td>
+              <td dangerouslySetInnerHTML={{ __html: node.excerpt }} />>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  {
+    wpgraphql {
+      posts {
+        edges {
+          node {
+            title
+            slug
+            postId
+            excerpt
+            content
+          }
+        }
+      }
+    }
+  }
+`
