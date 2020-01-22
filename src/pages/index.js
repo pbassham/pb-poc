@@ -1,5 +1,5 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
 
-    <h1>Hello, Phil!</h1>
+    <h1>Hello, Phil! Sup</h1>
 
     <div>
       <h2>My Site's Posts</h2>
