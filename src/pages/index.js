@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => (
           {data.wpgraphql.posts.edges.map(({ node }, index) => (
             <tr key={index}>
               <td>{node.title}</td>
-              <td><Link to="/pages/{node.slug}">GO</Link></td>
+              <td><Link to={node.slug}>GO</Link></td>
               <td>{node.postId}</td>
               <td dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </tr>
